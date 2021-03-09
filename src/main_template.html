@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cartoon Viewer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/foundation/5.5.3/css/foundation.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/foundation/5.5.3/js/foundation.min.js"></script>
+</head>
+<body style="padding:20px">
+    <ul class="accordion" data-accordion>
+        {% for index, cartoon_name in enumerate(directory_dict.keys()) %}
+        <li class="accordion-navigation">
+            <a href="#demo{{ index }}">{{ cartoon_name }}</a>
+            {% for chapter_name, chapter_url in directory_dict[cartoon_name] %}
+                <div id="demo{{ index }}" class="content">
+                    <a href="{{ chapter_url }}">{{ chapter_name }}</a>
+                </div>
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <script>
+    $(document).ready(function() {
+        $(document).foundation();
+    })
+    </script>
+</body>
+</html>
